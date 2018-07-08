@@ -1,0 +1,37 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+    {
+      "source": "/",
+      "function": "app"
+    }, 
+    {
+      "source": "/soundboard.html",
+      "function": "app"
+    }, 
+    {
+      "source": "/dates.html",
+      "function": "app"
+    }, 
+    {
+      "source": "/index.html",
+      "function": "app"
+    }]
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "functions": {
+    "predeploy": [], 
+    "source": "functions"
+  }
+}

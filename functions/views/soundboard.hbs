@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    {{> header }}
+    <script>
+      json = '{{{json}}}';
+    </script>
+    <script src="/js/soundboard.js"></script>
+    <script src="/js/soundjs.min.js"></script>
+  </head>
+
+  <body>
+    <div id="navbar-container">
+      {{> navbar }}
+    </div>
+
+    <div id="main">
+      <p class="header">Cyber Discovery Soundboard</p>
+      
+      <div id="soundboard-container">
+        <div id="soundboard">
+          {{#each sounds}}
+            <div class="soundboard-section">
+              <p>{{@key}}</p>
+              {{#each this}}
+                <div class="sound">
+                  <p>{{name}}</p>
+                </div>
+              {{/each}}
+            </div>
+          {{/each}}
+        </div>
+      </div>
+
+    </div>
+
+    <div id="footer-container">
+      {{> footer }}
+    </div>
+  </body>
+</html>

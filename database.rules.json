@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "Events": {
+      ".read": true,
+      ".write": false
+    },
+    "Soundboard": {
+      ".read": true,
+      ".write": false
+    }
+  }
+}
