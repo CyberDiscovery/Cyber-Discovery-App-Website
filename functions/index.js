@@ -47,11 +47,11 @@ app.get('/dates.html', (request, response) => {
 
 app.get('/soundboard.html', (request, response) => {
   getSounds().then(soundboard => {
-    json = JSON.stringify(soundboard);
+    let json = JSON.stringify(soundboard);
     json = json.replace(/'/g, "%27"); // prevent problems with quote marks in strings
 
-    sounds = soundboard.Sounds;
-    tabs = soundboard.Tabs;
+    let sounds = soundboard.Sounds;
+    let tabs = soundboard.Tabs;
 
     for (let i=0; i < tabs.count; i++) {
       delete sounds[tabs[i]].count;

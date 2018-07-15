@@ -2,8 +2,8 @@ let playing = false;
 
 soundboard_data = JSON.parse(json.replace(/%27/g, "'"));
 
-sounds = soundboard_data.Sounds;
-tabs = soundboard_data.Tabs;
+let sounds = soundboard_data.Sounds;
+let tabs = soundboard_data.Tabs;
 
 var soundboard = soundboard || {};
 soundboard.main = (function(window,document) {
