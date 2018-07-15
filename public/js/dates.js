@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('.countdown').each(function() {
-    var $this = $(this);
+    let $this = $(this);
     finalDate = parseInt($this.data('countdown'));
 
     $this.countdown(finalDate)
