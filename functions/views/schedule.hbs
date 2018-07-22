@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    {{> header }}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
+    <script src="/js/schedule.js"></script>
+  </head>
+
+  <body>
+    <div id="navbar-container">
+      {{> navbar }}
+    </div>
+
+    <div id="main">
+      <p class="header">Elite Schedules</p>
+      <div id="schedule-navbar">
+        {{#each tabs}}
+          <p class="navbar-link">{{this}}</p>
+        {{/each}}
+      </div>
+      <div id="schedules-container">
+        {{#each schedules}}
+        <div class="schedule" id="{{name_id}}" style="display:none">
+          <!-- for each place -->
+          <div id="overview">
+            <p id="name">{{name_id}}</p>
+            <p id="date">{{startTime}} - {{endTime}}</p>
+          </div>
+          {{#each activities}}
+            <div class="activity">
+              <div class="main">
+                <p class="name">{{name}}</p>
+                <p class="time startTime">Start: {{startTime}}</p>
+                <p class="time endTime">End: {{endTime}}</p>
+                <p class="tick"><i class="fa fa-check" aria-hidden="true"></i></p>
+              </div>
+              <p class="desc">{{description}}</p>
+              <div class="progress"><span data-start="{{startTimestamp}}" data-end="{{endTimestamp}}"></span></div>
+            </div>
+          {{/each}}
+        </div>
+        {{/each}}
+      </div>
+
+    </div>
+
+    <div id="footer-container">
+      {{> footer }}
+    </div>
+  </body>
+</html>
