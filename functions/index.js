@@ -67,27 +67,40 @@ app.get('/dates.html', (request, response) => {
 app.get('/schedule.html', (request, response) => {
 
   getSchedules().then(schedule => { 
+    
     let schedules = {};
     let tabs = schedule['Tabs']; 
     
     for (let i = 0; i < tabs.count; i++ ) {
+
       let tab_name = tabs[i];
+      let reg_expr = /[^a-zA-Z0-9-_]/g;
+      
       schedules[tab_name] = {};
       schedules[tab_name] = schedule['Schedules'][tab_name]; // add schedules to object so they are in the right order for the template
       
-      schedules[tab_name]['name_id'] = tab_name.replace("Elite - ", ""); // set the name_id attribute equal to  'Bristol', 'London', etc
+      schedules[tab_name]['name_id'] = tab_name.replace(reg_expr, ""); // remove spaces
       
       schedules[tab_name]['startTime'] = timestamp_to_date(schedules[tab_name]['startTimestamp']).substring(0,16);
       schedules[tab_name]['endTime'] = timestamp_to_date(schedules[tab_name]['endTimestamp']).substring(0, 16);
-      for (let j = 0; j < schedules[tab_name]['activities']['count']; j++) {
-        schedules[tab_name]['activities'][j]['startTime'] = timestamp_to_time(schedules[tab_name]['activities'][j]['startTimestamp']);
-        schedules[tab_name]['activities'][j]['endTime'] = timestamp_to_time(schedules[tab_name]['activities'][j]['endTimestamp']);
-      }
+      
+      if (schedules[tab_name]['released'] == true) {
 
+        for (let j = 0; j < schedules[tab_name]['activities']['count']; j++) {
+          schedules[tab_name]['activities'][j]['startTime'] = timestamp_to_time(schedules[tab_name]['activities'][j]['startTimestamp']);
+          schedules[tab_name]['activities'][j]['endTime'] = timestamp_to_time(schedules[tab_name]['activities'][j]['endTimestamp']);
+        }
+
+      } else {
+        delete schedules[tab_name]['released']; // used in handlebars templated to check if released yet
+      }
+    
       delete schedules[tab_name]['activities']['count']; // remove the count for each event
     }
+    
     delete tabs.count;
     response.render('schedule', { schedules, tabs, partials : { navbar : './partials/navbar', footer : './partials/footer' , header : './partials/header'} });
+  
   });
 
 });

@@ -258,6 +258,18 @@ p {
   width: 100%;
 }
 
+#not_released {
+  text-align: center;
+}
+
+#not_released img{
+  width: 100%;
+}
+
+#not_released p{
+  font-size: 20px;
+}
+
 /* Responsive */
 
 @media only screen and (max-width: 1200px) {

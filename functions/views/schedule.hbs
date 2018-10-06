@@ -24,9 +24,10 @@
         <div class="schedule" id="{{name_id}}" style="display:none">
           <!-- for each place -->
           <div id="overview">
-            <p id="name">{{name_id}}</p>
+            <p id="name">{{@key}}:</p>
             <p id="date">{{startTime}} - {{endTime}}</p>
           </div>
+          {{#if released}}
           {{#each activities}}
             <div class="activity">
               <div class="main">
@@ -39,6 +40,12 @@
               <div class="progress"><span data-start="{{startTimestamp}}" data-end="{{endTimestamp}}"></span></div>
             </div>
           {{/each}}
+          {{else}}
+          <div id="not_released">
+            <img src="https://firebasestorage.googleapis.com/v0/b/cyber-discovery-app.appspot.com/o/Images%2Funreleased.png?alt=media&token=76c25b51-6378-407c-895a-764e628bd90d"/> 
+            <p>The schedule for this event hasn't been released yet.</p>
+          </div>
+          {{/if}}
         </div>
         {{/each}}
       </div>
