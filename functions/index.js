@@ -19,6 +19,25 @@ function getDates() {
   return datesRef.once('value').then(snap => snap.val());
 }
 
+function getSchedules() {
+  const schedulesRef = firebase.database().ref("Schedule");
+  return schedulesRef.once('value').then(snap => snap.val());
+}
+
+function timestamp_to_time(timestamp) {
+  let date = new Date(timestamp); 
+  let options = {timeZone: "Europe/London", hour12: false}
+  let output = date.toLocaleTimeString('en-GB' , options).substring(0,5);
+  return output;
+}
+
+function timestamp_to_date(timestamp) {
+  let date = new Date(timestamp); 
+  let options = {timeZone: "Europe/London", hour12: false, month: "long", day:"numeric", minute: "2-digit", hour: "2-digit"}
+  let output = date.toLocaleString('en-GB' , options)
+  return output;
+}
+
 function getSounds() {
   var soundsRef = firebase.database().ref("Soundboard");
   return soundsRef.once('value').then(snap => snap.val());
@@ -43,6 +62,34 @@ app.get('/dates.html', (request, response) => {
 
     response.render('dates', { dates, partials : { navbar : './partials/navbar', footer : './partials/footer' , header : './partials/header'} });
   })
+});
+
+app.get('/schedule.html', (request, response) => {
+
+  getSchedules().then(schedule => { 
+    let schedules = {};
+    let tabs = schedule['Tabs']; 
+    
+    for (let i = 0; i < tabs.count; i++ ) {
+      let tab_name = tabs[i];
+      schedules[tab_name] = {};
+      schedules[tab_name] = schedule['Schedules'][tab_name]; // add schedules to object so they are in the right order for the template
+      
+      schedules[tab_name]['name_id'] = tab_name.replace("Elite - ", ""); // set the name_id attribute equal to  'Bristol', 'London', etc
+      
+      schedules[tab_name]['startTime'] = timestamp_to_date(schedules[tab_name]['startTimestamp']).substring(0,16);
+      schedules[tab_name]['endTime'] = timestamp_to_date(schedules[tab_name]['endTimestamp']).substring(0, 16);
+      for (let j = 0; j < schedules[tab_name]['activities']['count']; j++) {
+        schedules[tab_name]['activities'][j]['startTime'] = timestamp_to_time(schedules[tab_name]['activities'][j]['startTimestamp']);
+        schedules[tab_name]['activities'][j]['endTime'] = timestamp_to_time(schedules[tab_name]['activities'][j]['endTimestamp']);
+      }
+
+      delete schedules[tab_name]['activities']['count']; // remove the count for each event
+    }
+    delete tabs.count;
+    response.render('schedule', { schedules, tabs, partials : { navbar : './partials/navbar', footer : './partials/footer' , header : './partials/header'} });
+  });
+
 });
 
 app.get('/soundboard.html', (request, response) => {

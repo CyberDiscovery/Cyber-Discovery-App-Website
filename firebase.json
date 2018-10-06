@@ -23,6 +23,10 @@
       "function": "app"
     }, 
     {
+      "source": "/schedule.html",
+      "function": "app"
+    }, 
+    {
       "source": "/index.html",
       "function": "app"
     }]
