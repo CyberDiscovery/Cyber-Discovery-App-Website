@@ -1,5 +1,6 @@
 function id_from_name(string) {
-  return string.replace("Elite - ", "");
+  let reg_expr = /[^a-zA-Z0-9-_]/g;
+  return string.replace(reg_expr, ""); // remove spaces
 }
 
 function calculate_width(s, e) {
@@ -27,6 +28,7 @@ $(document).ready(function() {
       $('.schedule').each(function() {
         $(this).css("display", "none");
       });
+      
       // get the schedule with the same name as the text of the navbar item clicked and set display to block
       let id = id_from_name($(this).text());
       $('#' + id).css("display", "block");
