@@ -5,8 +5,11 @@ $(document).ready(function() {
 
     $this.countdown(finalDate)
       .on('update.countdown', function(event) {
-        $(this).text(
-          event.strftime('%D days %H hours %M minutes %S seconds')
+        $('> #_1', this).text(
+          event.strftime('%D days %H hours')
+        );
+        $('> #_2', this).text(
+          event.strftime('%M minutes %S seconds')
         );
       })
       .on('finish.countdown', function(event) {
