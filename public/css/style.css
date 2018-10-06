@@ -1,15 +1,25 @@
+:root {
+  --primary-color: #091b27;
+  --secondary-color: #705A8F;
+  --tertiary-color: #836ca3;
+  --text-color-1: #000;
+  --text-color-2: #fff;
+  --text-color-3: #a8a3a3;
+  --green-check: #02b829;
+}
+
 html {
   font-family: 'Dosis', sans-serif;
 }
 
 #navbar {
-  background-color: #705A8F;
+  background-color: var(--secondary-color);;
   overflow: hidden;
 }
 
 #navbar a {
   float: left;
-  color: #fff;
+  color: var(--text-color-2);;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -17,23 +27,23 @@ html {
 }
 
 #navbar a:hover {
-  background-color: #836ca3;
+  background-color: var(--tertiary-color);;
 }
 
 .header {
   text-align: center;
-  color: #fff;
+  color: var(--text-color-2);
   font-size: 35px;
   margin: 9px 0px;
   padding: 13px 13px;
 }
 
 #main a{
-  color: #705a8f;
+  color: var(--secondary-color);;
 }
 
 #main a:hover{
-  color: #836ca3;
+  color: var(--tertiary-color);;
 }
 
 .soundboard-section {
@@ -42,18 +52,18 @@ html {
 
 #main {
   margin: 10px 0px;
-  background-color: #091b27;
+  background-color: var(--primary-color);
   padding: 10px;
 }
 
 #footer {
-  background-color: #705A8F;
+  background-color: var(--secondary-color);
   overflow: hidden;
 }
 
 #footer a{
   float: left;
-  color: #fff;
+  color: var(--text-color-2);;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -61,11 +71,11 @@ html {
 }
 
 #footer a:hover {
-  background-color: #836ca3;
+  background-color: var(--tertiary-color);;
 }
 
 p {
-  color: #fff;
+  color: var(--text-color-2);
   padding: 0px 16px;
   font-size: 25px;
 }
@@ -79,7 +89,7 @@ p {
   overflow: hidden;
   flex-grow: 1;
   border-radius: 25px;
-  width: 33%;
+  width: 32%;
   display: inline-block;
   margin: 10px 0px;
   padding: 0px;
@@ -88,7 +98,7 @@ p {
 }
 
 .event p {
-  color: #000;
+  color: var(--text-color-1);;
 }
 
 .event img {
@@ -104,7 +114,7 @@ p {
 .event .desc {
   font-size: 20px;
   margin: 5px 0px 16px 0px;
-  color: #a8a3a3;
+  color: var(--text-color-3);;
 }
 
 .sound {
@@ -126,6 +136,107 @@ p {
   text-align: center;
 }
 
+.activity {
+  background-color: #fff;
+  margin: 3px;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.activity p {
+  padding: 0px;
+  color: var(--text-color-1);;
+  margin: 0px;
+}
+
+.activity .main {
+  padding: 0px;
+}
+
+.activity .tick {
+  padding-right: 10px;
+  float: right;
+}
+
+.activity .name {
+  font-size: 20px;
+  display: inline;
+  padding-right: 10px;
+}
+
+.activity .time {
+  font-size: 16px;
+  display: inline;
+  padding-right: 10px;
+}
+
+.activity .desc {
+  margin: 0px;
+  font-size: 15px;
+  color: var(--text-color-3);
+}
+
+.activity .progress {
+  height: 6px;
+  margin-top: 2px;
+  background-color: var(--primary-color);
+}
+
+.activity .progress > span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background-color: var(--green-check);
+}
+
+.schedule {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#schedule-navbar {
+  background-color: var(--secondary-color);;
+  overflow: hidden;
+  margin: 3px auto;
+  width: 50%;
+  text-align: center;
+  border-radius: 3px;
+}
+
+#schedule-navbar p {
+  margin: 0px;
+  display: inline-block;
+  color: var(--text-color-2);;
+  text-align: center;
+  padding: 5px 15px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.schedule #overview {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.schedule #overview p{
+  display: inline;
+  font-size: 20px;
+  margin: 0px;
+  padding: 0px;
+  padding-left: 5px;
+}
+
+#schedule-navbar p:hover {
+  background-color: var(--tertiary-color);
+}
+
+#schedules-container {
+  width: 100%;
+}
+
+
+
 @media only screen and (max-width: 1200px) {
   .event {
     width: 49.5%;
@@ -138,6 +249,12 @@ p {
   }
 }
 
-body {
-    background-color: #091b27;
+@media only screen and (max-width: 800px) {
+  .schedule {
+    width: 100%;
+  }
+
+  #schedule-navbar {
+    width: 100%;
+  }
 }
