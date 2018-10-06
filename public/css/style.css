@@ -80,18 +80,20 @@ p {
 
 /* Events */
 
-.event-container {
+#event-container {
   width: 100%;
   padding: 0px;
+  text-align: center;
 }
 
 .event {
+
   overflow: hidden;
   flex-grow: 1;
   border-radius: 25px;
-  width: 32%;
+  width: 450px;
   display: inline-block;
-  margin: 10px 0px;
+  margin: 0;
   padding: 0px;
   background-color: #fff;
   text-align: center;
@@ -113,8 +115,13 @@ p {
 
 .event .desc {
   font-size: 20px;
-  margin: 5px 0px 16px 0px;
+  margin: 5px 0px 5px 0px;
   color: var(--text-color-3);;
+}
+
+.countdown {
+  font-size: 23px;
+  margin: 15px;
 }
 
 /* Soundboard */
@@ -150,7 +157,7 @@ p {
 
 #soundboard-container {
   text-align: center;
-  margin: 5%;
+  margin: 0 5%;
 }
 
 .soundboard-section {
@@ -274,11 +281,11 @@ p {
 
 @media only screen and (max-width: 1200px) {
   .event {
-    width: 49.5%;
+    width: 400px;
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 450px) {
   .event {
     width: 100%;
   }

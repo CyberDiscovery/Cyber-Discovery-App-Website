@@ -56,6 +56,7 @@ app.get('/dates.html', (request, response) => {
       if (dates[i.toString()].timestamp <= Date.now()) { // remove events that have already happened
         delete dates[i.toString()];
       }
+
     }
 
     delete dates.count;
