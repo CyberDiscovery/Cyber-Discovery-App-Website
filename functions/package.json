@@ -19,7 +19,7 @@
     "soundjs": "1.0.1"
   },
   "devDependencies": {
-    "eslint": "4.19.1",
+    "eslint": "5.12.1",
     "eslint-plugin-promise": "3.8.0"
   },
   "private": true
